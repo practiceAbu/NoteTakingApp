@@ -5,7 +5,8 @@ def display():
     print(" 1 . View Notes")
     print(' 2 . Create Notes')
     print(' 3 . Delete Notes')
-    print(' 4 . Exit')
+    print(' 4 . Delete Notes Folder')
+    print(' 5 . Exit')
 
 def createNotes():
     notes_title = input(' Enter the Note title : ')
@@ -38,11 +39,19 @@ def DeleteNotes():
         os.remove(notes_path)
         print(f"Note {notes_title} was removed successfully ")
 
+def deleteFolder():
+    notes_dir = "notes"
+    if os.path.exists(notes_dir):
+        os.rmdir(notes_dir)
+        print("Notes folder deleted successfully")
+    else:
+        print("Notes folder does not exist")
+
 def main():
     
     while True :
          display()
-         val = input("Enter a number between 1 to 4 :")
+         val = input("Enter a number between 1 to 5 :")
          if val == '1':
              viewNotes()
          elif val == '2':
@@ -50,6 +59,8 @@ def main():
          elif val == '3':
              DeleteNotes()
          elif val == '4':
+             deleteFolder()
+         elif val == '5':
              print("Exiting the Notes App Thank you :) ")
              break
          else:
